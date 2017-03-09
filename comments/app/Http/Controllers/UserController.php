@@ -37,7 +37,7 @@ class UserController extends Controller
      * @apiParam {String} password Password must be a minimum of 6 characters
 
      * @apiSuccess {String} name name of the User.
-     * @apiSuccess {String} email email of the User.
+     * @apiSuccess {Number} id id of the User.
      */
 
     public function store(Request $request)

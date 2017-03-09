@@ -5,6 +5,7 @@ use App\Models\Comment;
 use App\Models\Tag;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
+use App\Transformers\CommentTransformer;
 
 class CommentController extends Controller
 {
@@ -22,7 +23,7 @@ class CommentController extends Controller
     public function index(Request $request)
     {
 
-        return $request->user()->comments;
+        return $this->transform($request->user()->comments, new CommentTransformer());
 
     }
 
@@ -58,7 +59,7 @@ class CommentController extends Controller
             }
             $comment->tags()->sync($tagIds);
         }
-        return $comment;
+        return $this->transform($comment, new CommentTransformer());
     }
 
     /**
@@ -77,7 +78,7 @@ class CommentController extends Controller
         if ($comment->user->id !== $request->user()->id) {
             throw new AuthorizationException();
         }
-        return $comment;
+        return $this->transform($comment, new CommentTransformer());
 
     }
 
@@ -99,7 +100,7 @@ class CommentController extends Controller
         }
         $comment->delete();
 
-        return $comment;
+        return $this->transform($comment, new CommentTransformer());
     }
 
     /**
@@ -131,7 +132,7 @@ class CommentController extends Controller
         $comment->body = $request->input('body');
         $comment->save();
 
-        return $comment;
+        return $this->transform($comment, new CommentTransformer());
     }
 
 }
