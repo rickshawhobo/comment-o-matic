@@ -24,6 +24,6 @@
 
 `docker-compose exec workspace php comments/artisan migrate`
 
-7) The api is now available on `localhost:8880/api`
+7) The api is now available on `http://localhost:8880/api`
 
 8) Use the postman collection to test. Be sure to switch the environment to `dev`
