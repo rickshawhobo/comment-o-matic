@@ -1,6 +1,6 @@
-## The comment-o-matic api
+# The comment-o-matic api
 
-# installation
+## installation
 
 1) Download docker
 
