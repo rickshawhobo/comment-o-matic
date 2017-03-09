@@ -14,7 +14,7 @@
 
 4) start the docker containers 
 
-`docker-compose -d nginx mysql`
+`cd comment-o-matic/laradock && docker-compose up -d nginx mysql`
 
 5) run composer 
 
