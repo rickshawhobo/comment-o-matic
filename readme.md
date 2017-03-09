@@ -26,4 +26,6 @@
 
 7) The api is now available on `http://localhost:8880/api`
 
-8) Use the postman collection to test. Be sure to switch the environment to `dev`
+8) Read the api doc at `http://localhost:8880/doc`
+
+9) Use the postman collection to test. Be sure to switch the environment to `dev`
