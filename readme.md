@@ -3,15 +3,19 @@
 # installation
 
 1) Download docker
+
 2) clone this repo 
 
 `git clone git@github.com:rickshawhobo/comment-o-matic.git`
+
 3) copy the env 
 
 `cp comment-o-matic/comments/.env.example comment-o-matic/comments/.env`
+
 4) start the docker containers 
 
 `docker-compose -d nginx mysql`
+
 5) run composer 
 
 `docker-compose exec workspace composer --working-dir=comments install`
