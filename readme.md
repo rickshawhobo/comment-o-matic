@@ -28,4 +28,4 @@
 
 8) Read the api doc at `http://localhost:8880/doc`
 
-9) Use the postman collection to test. Be sure to switch the environment to `dev`
+9) Import the postman collection at `http://localhost:8880/doc/comment-o-matic.postman_collection` and run the test. Be sure to switch the environment to `dev`
