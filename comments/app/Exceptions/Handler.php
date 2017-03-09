@@ -3,8 +3,11 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,7 +47,27 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+
+
+        $error = "Server Error";
+        $code = 500;
+
+        if ($exception instanceof AuthorizationException) {
+            $error = "Forbidden";
+            $code = 403;
+        } else if ($exception instanceof AuthenticationException) {
+            $error = "Unauthorized";
+            $code = 401;
+        } else if ($exception instanceof ModelNotFoundException) {
+            $error = "Not Found";
+            $code = 404;
+        } else if ($exception instanceof ValidationException) {
+            $error = $exception->validator->errors()->getMessages();
+            $code = 423;
+        }
+        return response()->json(['error' => $error], $code);
+
+
     }
 
     /**
